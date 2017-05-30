@@ -9,15 +9,9 @@ import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
 import se.akerfeldt.okhttp.signpost.SigningInterceptor;
 
 public class YelpService {
+    private static OkHttpClient client = new OkHttpClient();
 
     public static void findRestaurants(String location, Callback callback) {
-        OkHttpOAuthConsumer consumer = new OkHttpOAuthConsumer(Constants.YELP_CONSUMER_KEY, Constants.YELP_CONSUMER_SECRET);
-        consumer.setTokenWithSecret(Constants.YELP_TOKEN, Constants.YELP_TOKEN_SECRET);
-
-        // Creating OkHttp client to create and send requests
-        OkHttpClient client = new OkHttpClient.Builder()
-                .addInterceptor(new SigningInterceptor(consumer))
-                .build();
 
         // Buiiding the Request URL
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Constants.YELP_BASE_URL).newBuilder();
@@ -25,7 +19,9 @@ public class YelpService {
         String url = urlBuilder.build().toString();
 
         // creatng a new request with OkHttp
+
         Request request= new Request.Builder()
+                .header("Authorization", "Bearer " + Constants.YELP_TOKEN)
                 .url(url)
                 .build();
 
