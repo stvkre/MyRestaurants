@@ -53,25 +53,25 @@ public class YelpService {
                     String website = restaurantJSON.getString("url");
                     double rating = restaurantJSON.getDouble("rating");
                     String imageUrl = restaurantJSON.getString("image_url");
-                    double latitude = restaurantJSON.getJSONObject("location")
-                            .getJSONObject("coordinate").getDouble("latitude");
-                    double longitude = restaurantJSON.getJSONObject("location")
-                            .getJSONObject("coordinate").getDouble("longitude");
+//                    double latitude = restaurantJSON
+//                            .getJSONObject("coordinate").getDouble("latitude");
+//                    double longitude = restaurantJSON
+//                            .getJSONObject("coordinate").getDouble("longitude");
                     ArrayList<String> address = new ArrayList<>();
                     JSONArray addressJSON = restaurantJSON.getJSONObject("location")
                             .getJSONArray("display_address");
                     for (int y = 0; y < addressJSON.length(); y++) {
-                        address.add(addressJSON.get(y).toString());
+                        address.add(addressJSON.toString());
                     }
 
                     ArrayList<String> categories = new ArrayList<>();
                     JSONArray categoriesJSON = restaurantJSON.getJSONArray("categories");
 
                     for (int y = 0; y < categoriesJSON.length(); y++) {
-                        categories.add(categoriesJSON.getJSONArray(y).get(0).toString());
+                        categories.add(categoriesJSON.getJSONObject(y).getString("title").toString());
                     }
                     Restaurant restaurant = new Restaurant(name, phone, website, rating,
-                            imageUrl, address, latitude, longitude, categories);
+                            imageUrl, address, categories);
                     restaurants.add(restaurant);
                 }
             }
