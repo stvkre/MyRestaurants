@@ -1,4 +1,7 @@
-package com.example.stephen.myrestaurants;
+package com.example.stephen.myrestaurants.services;
+
+import com.example.stephen.myrestaurants.Constants;
+import com.example.stephen.myrestaurants.models.Restaurant;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,8 +16,6 @@ import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import se.akerfeldt.okhttp.signpost.OkHttpOAuthConsumer;
-import se.akerfeldt.okhttp.signpost.SigningInterceptor;
 
 public class YelpService {
     private static OkHttpClient client = new OkHttpClient();
