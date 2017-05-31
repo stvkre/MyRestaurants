@@ -3,7 +3,7 @@ package com.example.stephen.myrestaurants;
 import android.os.Build;
 import android.widget.ListView;
 
-import com.example.stephen.myrestaurants.ui.RestaurantActivity;
+import com.example.stephen.myrestaurants.ui.RestaurantListActivity;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -19,12 +19,12 @@ import static junit.framework.Assert.assertNotNull;
 @RunWith(RobolectricGradleTestRunner.class)
 
 public class RestaurantsActivityTest {
-    private RestaurantActivity activity;
+    private RestaurantListActivity activity;
     private ListView mRestaurantListView;
 
     @Before
     public void setup() {
-        activity = Robolectric.setupActivity(RestaurantActivity.class);
+        activity = Robolectric.setupActivity(RestaurantListActivity.class);
         mRestaurantListView = (ListView) activity.findViewById(R.id.listView);
     }
 

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
-import android.widget.ListView;
 
 import com.example.stephen.myrestaurants.R;
 import com.example.stephen.myrestaurants.adapters.RestaurantListAdapter;
@@ -22,8 +21,8 @@ import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
-public class RestaurantActivity extends AppCompatActivity {
-    public static final String TAG = RestaurantActivity.class.getSimpleName();
+public class RestaurantListActivity extends AppCompatActivity {
+    public static final String TAG = RestaurantListActivity.class.getSimpleName();
 
    @Bind(R.id.locationTextView) TextView mLocationTextView;
     // @Bind(R.id.listView) ListView mListView;
@@ -61,13 +60,13 @@ public class RestaurantActivity extends AppCompatActivity {
             public void onResponse(Call call, Response response) {
                 mRestaurants = yelpService.processResults(response);
 
-                RestaurantActivity.this.runOnUiThread(new Runnable() {
+                RestaurantListActivity.this.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
                         mAdapter = new RestaurantListAdapter(getApplicationContext(), mRestaurants);
                         mRecyclerView.setAdapter(mAdapter);
                         RecyclerView.LayoutManager layoutManager =
-                                new LinearLayoutManager(RestaurantActivity.this);
+                                new LinearLayoutManager(RestaurantListActivity.this);
                         mRecyclerView.setLayoutManager(layoutManager);
                         mRecyclerView.setHasFixedSize(true);
                     }

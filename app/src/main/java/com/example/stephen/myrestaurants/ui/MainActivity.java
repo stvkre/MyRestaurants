@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (v == mFindRestaurantsButton) {
             String location = mLocationEditText.getText().toString();
 //            Log.d("MainActivity", location);
-            Intent intent = new Intent(MainActivity.this, RestaurantActivity.class);
+            Intent intent = new Intent(MainActivity.this, RestaurantListActivity.class);
             intent.putExtra("location", location);
             startActivity(intent);
         }
