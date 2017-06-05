@@ -31,6 +31,7 @@ public class Restaurant {
         this.mLatitude = latitude;
         this.mLongitude = longitude;
         this.mCategories = categories;
+
     }
 
     public String getName() {
@@ -68,4 +69,6 @@ public class Restaurant {
     public ArrayList<String> getCategories() {
         return mCategories;
     }
+
+
 }
