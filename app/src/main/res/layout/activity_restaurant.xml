@@ -10,11 +10,6 @@
     android:paddingTop="16dp"
     tools:context=".ui.RestaurantListActivity">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/locationTextView"
-        android:layout_above="@+id/recyclerView"></TextView>
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"

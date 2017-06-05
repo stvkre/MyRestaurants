@@ -1,14 +1,17 @@
 package com.example.stephen.myrestaurants.ui;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+//import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.graphics.Typeface;
 
+import com.example.stephen.myrestaurants.Constants;
 import com.example.stephen.myrestaurants.R;
 
 import butterknife.Bind;
@@ -16,6 +19,8 @@ import butterknife.ButterKnife;
 
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
     public static final String TAG = MainActivity.class.getSimpleName();
     @Bind(R.id.findRestaurantsButton) Button mFindRestaurantsButton;
     @Bind(R.id.locationEditText) EditText mLocationEditText;
@@ -28,8 +33,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        Typeface PacificoFont = Typeface.createFromAsset(getAssets(), "fonts/Pacifico.ttf");
-        myRestaurantsTextView.setTypeface(PacificoFont);
+        Typeface pacificoFont = Typeface.createFromAsset(getAssets(), "fonts/Pacifico.ttf");
+        myRestaurantsTextView.setTypeface(pacificoFont);
 
         mFindRestaurantsButton.setOnClickListener(this);
 
@@ -45,5 +50,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             intent.putExtra("location", location);
             startActivity(intent);
         }
+    }
+
+    private void addToSharedPreferences(String location) {
+        mEditor.putString(Constants.PREFERENCES_LOCATION_KEY, location).apply();
     }
 }

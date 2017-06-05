@@ -1,30 +1,35 @@
 package com.example.stephen.myrestaurants.models;
 
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
+@Parcel
 public class Restaurant {
-    private String mName;
-    private String mPhone;
-    private String mWebsite;
-    private double mRating;
-    private String mImageUrl;
-    private ArrayList<String> mAddress = new ArrayList<>();
-    private double mLatitude;
-    private double mLongitude;
-    private ArrayList<String> mCategories = new ArrayList<>();
+    String mName;
+    String mPhone;
+    String mWebsite;
+    double mRating;
+    String mImageUrl;
+    ArrayList<String> mAddress = new ArrayList<>();
+    double mLatitude;
+    double mLongitude;
+    ArrayList<String> mCategories = new ArrayList<>();
+
+    public Restaurant() {}
 
     public Restaurant(String name, String phone, String website,
                       double rating, String imageUrl, ArrayList<String> address,
-                       ArrayList<String> categories) {
+                      double latitude, double longitude, ArrayList<String> categories) {
         this.mName = name;
         this.mPhone = phone;
         this.mWebsite = website;
         this.mRating = rating;
         this.mImageUrl = imageUrl;
         this.mAddress = address;
-//        this.mLatitude = latitude;
-//        this.mLongitude = longitude;
+        this.mLatitude = latitude;
+        this.mLongitude = longitude;
         this.mCategories = categories;
     }
 
@@ -37,7 +42,7 @@ public class Restaurant {
     }
 
     public String getWebsite() {
-        return  mWebsite;
+        return mWebsite;
     }
 
     public double getRating() {
@@ -52,13 +57,13 @@ public class Restaurant {
         return mAddress;
     }
 
-//    public double getLatitude() {
-//        return mLatitude;
-//    }
-//
-//    public double getLongitude() {
-//        return mLongitude;
-//    }
+    public double getLatitude() {
+        return mLatitude;
+    }
+
+    public double getLongitude() {
+        return mLongitude;
+    }
 
     public ArrayList<String> getCategories() {
         return mCategories;
