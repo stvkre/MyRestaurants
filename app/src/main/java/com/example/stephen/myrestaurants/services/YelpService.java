@@ -62,7 +62,7 @@ public class YelpService {
                     JSONArray addressJSON = restaurantJSON.getJSONObject("location")
                             .getJSONArray("display_address");
                     for (int y = 0; y < addressJSON.length(); y++) {
-                        address.add(addressJSON.toString());
+                        address.add(addressJSON.get(y).toString());
                     }
 
                     ArrayList<String> categories = new ArrayList<>();

@@ -1,15 +1,13 @@
 package com.example.stephen.myrestaurants.ui;
 
 import android.content.Intent;
-//import android.content.SharedPreferences;
+import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-//import android.widget.ListView;
-import android.widget.TextView;
 
 import com.example.stephen.myrestaurants.Constants;
 import com.example.stephen.myrestaurants.R;
@@ -27,12 +25,9 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class RestaurantListActivity extends AppCompatActivity {
-    //private SharedPreferences mSharedPreferences;
-    //private String mRecentAddress;
-    public static final String TAG = RestaurantListActivity.class.getSimpleName();
+    private SharedPreferences mSharedPreferences;
+    private String mRecentAddress;
 
-//   @Bind(R.id.locationTextView) TextView mLocationTextView;
-   //ListView mListView;
    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
     private RestaurantListAdapter mAdapter;
@@ -47,11 +42,13 @@ public class RestaurantListActivity extends AppCompatActivity {
 
            Intent intent = getIntent();
            String location = intent.getStringExtra("location");
-//        mLocationTextView.setText("Here are all the restaurants near: " + location);
 
-
-            getRestaurants(location);
-
+//        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+//        mRecentAddress = mSharedPreferences.getString(Constants.PREFERENCES_LOCATION_KEY, null);
+//        if (mRecentAddress != null) {
+//            getRestaurants(mRecentAddress);
+//        }
+        getRestaurants(location);
     }
 
     private void getRestaurants(String location) {
