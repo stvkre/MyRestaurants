@@ -70,7 +70,7 @@ private DatabaseReference mSearchedLocationReference;
     }
 
     public void saveLocationToFirebase(String location) {
-        mSearchedLocationReference.setValue(location);
+        mSearchedLocationReference.push().setValue(location);
     }
 
 //    private void addToSharedPreferences(String location) {
